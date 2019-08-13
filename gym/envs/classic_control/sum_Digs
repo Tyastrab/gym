@@ -1,0 +1,44 @@
+import tensorflow as tf
+import numpy as np
+import random
+import math
+import matplotlib.pyplot as plt
+from gym import error, spaces, utils  # are we using spaces?
+from gym.utils import seeding
+
+
+class SumDigs:
+
+    def __init__(self):
+        self.min_dig = 0
+        self.max_dig = 9
+
+        self.low = np.array([self.min_dig])
+        self.high = np.array([self.max_dig])
+
+        self.viewer = None
+
+        self.action_space = spaces.Discrete(9)
+        self.observation_space = spaces.Box(self.low, self.high, dtype=np.float32)
+        self.seed()
+
+    def seed(self, seed=None):
+        self.np_random, seed = seeding.np_random(seed)
+        return [seed]
+
+    def step(self, action):
+        # assert self.action_space.contains(action), "%r (%s) invalid" % (action, type(action))
+
+        dig_one = self.state
+
+        dig_one = action
+
+        done = bool(dig_one == 9)
+        reward = -1.0
+
+        self.state = dig_one,
+        return np.array(self.state), reward, done, {}
+
+    def reset(self):
+        self.state = np.array([0])
+        return np.array(self.state)
