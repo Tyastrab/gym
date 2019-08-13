@@ -7,7 +7,7 @@ from gym import error, spaces, utils  # are we using spaces?
 from gym.utils import seeding
 
 
-class SunDigs(gym.Env):
+class SumDigs(gym.Env):
     metadata = {
         'render.modes': ['human', 'rgb_array'],
         'video.frames_per_second': 30
